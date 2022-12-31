@@ -1,0 +1,8 @@
+#!/bin/bash -e
+# created by: /usr/lib/inithooks/bin/secalerts.sh
+curl https://hub.turnkeylinux.org/api/server/secalerts/ \
+    -d email="marcushawley1970@gmail.com`" \
+    -d turnkey_version="turnkey-wordpress-17.1-bullseye-amd64 proxmox" \
+    --silent --fail --output /dev/null || exit 0
+
+rm -f $0
