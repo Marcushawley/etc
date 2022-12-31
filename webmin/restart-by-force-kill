@@ -1,0 +1,4 @@
+#!/bin/sh
+/usr/bin/systemctl stop webmin
+/etc/webmin/.stop-init --kill >/dev/null 2>&1
+/usr/bin/systemctl start webmin

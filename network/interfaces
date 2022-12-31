@@ -1,0 +1,15 @@
+# UNCONFIGURED INTERFACES
+# remove the above line if you edit this file
+
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet static
+	address 192.168.0.6/24
+	gateway 192.168.0.1
+	hostname wordpress
+
+allow-hotplug eth1
+iface eth1 inet dhcp
+ hostname wordpress

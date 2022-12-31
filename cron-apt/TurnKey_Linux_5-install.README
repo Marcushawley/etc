@@ -1,0 +1,30 @@
+# The files in action-available.d named '5-install.XXX' relate to the
+# '5-install' cronapt script located in /etc/cron-apt/actions.d/
+#
+# Which particular action to be applied is determined by which file the
+# symlink /etc/cron-apt/config.d/5-install points to.
+#
+# To double check this; use this::
+#
+#       ls -l /etc/cron-apt/action.d/5-install
+#
+# E.g. here is the expected output under default condition (only important
+# part shown)::
+#
+#       /etc/cron-apt/action.d/5-install -> ../action-available.d/5-install.default
+#
+# 5-install.default aka 'default'
+# -------------------------------
+#
+# This is the historic and default TurnKey cron-apt behaviour. Only packages
+# from the security.sources.list repositories will be installed. Any conflicts
+# or missing dependencies will not be installed and will cause package removal.
+# This package removal may cause one or more services to fail.
+#
+# 5-install.alt aka 'alternate'
+# -----------------------------
+#
+# This is a new option which is similar to the default. However, it will not
+# allow removal of packages. This will maximise uptime of all services, but
+# conversely, may also allow services with unpatched security vulnerabilities
+# to continue running.

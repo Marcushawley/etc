@@ -1,0 +1,51 @@
+###############################
+# TKLBAM BACKUP CONFIGURATION #
+###############################
+
+# volsize: size of backup volumes in MBs
+
+volsize 25
+
+# s3-parallel-uploads: Amazon S3 supports multipart uploads. This
+# allows different chunks of a volume to be uploaded in parallel
+# which may increase upload speed.
+#
+# The minimum chunk size is 5MB so the maximum s3-parallel-uploads value 
+# equals volsize / 5
+
+s3-parallel-uploads	1
+
+# full-backup: time frequency of full backup
+# (in between full backups we do incremental backups)
+#
+#   format := <int>[mhDWM]
+#     
+#     e.g.,
+#     60m - 60 minutes
+#     12h - 12 hours
+#     3D - three days
+#     2W - two weeks
+#     1M - one month
+
+full-backup 1M
+
+# Skip backup components?
+
+backup-skip-files       False
+backup-skip-packages    False
+backup-skip-database    False
+
+# restore-cache-size: the maximum size of the download cache in restore-cache-path
+# 
+# This will come in handy when:
+# 1) resuming big restores (already downloaded backup archives don't need to be re-downloaded)
+# 2) if you make a mistake and need to rollback the restore and try again
+#
+# e.g.,
+#       1000MB
+#       2GB
+#       50% - 50% of free space in the restore-cache-path
+
+restore-cache-size 50%
+restore-cache-dir /var/cache/tklbam/restore
+

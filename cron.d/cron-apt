@@ -1,0 +1,4 @@
+# cron job for cron-apt package
+# randomized time to prevent clients from accessing repo at the same time
+19 16 * * * root test -x /usr/sbin/cron-apt && /usr/sbin/cron-apt
+

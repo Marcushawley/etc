@@ -1,0 +1,5 @@
+deb [signed-by=/usr/share/keyrings/tkl-bullseye-security.gpg] http://archive.turnkeylinux.org/debian bullseye-security main
+
+deb http://security.debian.org/ bullseye-security main
+deb http://security.debian.org/ bullseye-security contrib
+#deb http://security.debian.org/ bullseye-security non-free

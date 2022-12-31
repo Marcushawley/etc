@@ -1,0 +1,17 @@
+#!/bin/sh
+
+if grep RUN_FIRSTBOOT /etc/default/inithooks | grep -iq RUN_FIRSTBOOT=true; then
+    if ! grep -q boot=casper /proc/cmdline || grep -q boot=live /proc/cmdline; then
+        if [ -z "$TERM" ]; then
+            _term=linux
+        else
+            _term=$TERM
+        fi
+
+        bold=$(tput -T $_term bold)
+        normal=$(tput -T $_term sgr0)
+
+        echo "    ${bold}WARNING:${normal} Firstboot hooks will rerun on reboot!"
+        echo
+    fi
+fi

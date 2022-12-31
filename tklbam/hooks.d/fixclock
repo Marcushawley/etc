@@ -1,0 +1,53 @@
+#!/usr/bin/python2
+# hook that runs ntpdate before duplicity to sync clock to UTC
+
+import os
+import sys
+import executil
+from string import Template
+
+NTPSERVER = os.environ.get("NTPSERVER", "2.pool.ntp.org")
+
+ERROR_TPL = """\
+##########################
+## FIXCLOCK HOOK FAILED ##
+##########################
+
+Amazon S3 and Duplicity need a UTC synchronized clock so we invoked the
+following command::
+
+    $COMMAND
+
+You can change the NTP server like this:
+
+    export NTPSERVER=my.ntp-server.net
+    tklbam-backup
+
+Unfortunately, something went wrong...
+
+$ERROR
+
+"""
+
+def fixclock():
+    os.environ['PATH'] += ':/usr/sbin'
+
+    command = "ntpdate -u " + NTPSERVER
+
+    try:
+        executil.getoutput(command)
+    except executil.ExecError, e:
+        msg = Template(ERROR_TPL).substitute(COMMAND=command,
+                                             ERROR=e.output)
+
+        print >> sys.stderr, msg,
+        sys.exit(1)
+
+def main():
+    op, state = sys.argv[1:]
+
+    if op in ('restore', 'backup') and state == 'pre':
+        fixclock()
+
+if __name__ == "__main__":
+    main()

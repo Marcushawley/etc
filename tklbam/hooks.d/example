@@ -1,0 +1,34 @@
+#!/bin/bash -e
+# This is a disabled hook example. 
+# To enable, make it executable: chmod +x /etc/tklbam/hooks.d/example
+
+# hooks are always called with two arguments
+op=$1
+state=$2
+
+echo -n "HOOK $0 :: op=$op state=$state pwd=$(pwd) :: "
+
+if [ "$state" = "pre" ]; then
+
+    echo "BEFORE $op started"
+
+elif [ "$state" = "inspect" ]; then
+
+    if [ "$op" = "restore" ]; then
+        echo "hook invoked after Duplicity downloads backup archive. Extras path = $(pwd)"
+    elif [ "$op" = "backup" ]; then
+        echo "hook invoked before Duplicity uploads backup archive. Extras path = $(pwd)"
+    fi
+
+elif [ "$state" = "post" ]; then
+
+    echo "AFTER $op finishes"
+
+else
+    echo "bad hook invocation"
+fi
+
+# `false` returns a non-zero exitcode
+# Uncomment the next line to raise an error
+
+#false

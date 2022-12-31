@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/bin/systemctl kill --signal=SIGHUP --kill-who=main webmin

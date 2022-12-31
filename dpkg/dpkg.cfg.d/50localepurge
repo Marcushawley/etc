@@ -1,0 +1,49 @@
+# DO NOT MODIFY/REMOVE THIS FILE - IT IS AUTO-GENERATED
+#
+# To remove/disable this, run dpkg-reconfigure localepurge
+# and say no to/disable the "Use dpkg --path-exclude" option.
+#
+# To change what patterns are affected use:
+# * dpkg-reconfigure localepurge
+#   (to alter which locales are kept and whether manpages should
+#    be purged)
+# * Add a dpkg config file in /etc/dpkg/dpkg.cfg.d that is read
+#   after this file with the necessary --path-include and
+#   --path-exclude options.
+#
+# Report faulty patterns against the localepurge package.
+#
+
+# Paths to purge
+path-exclude=/usr/share/locale/*
+path-exclude=/usr/share/gnome/help/*/*
+path-exclude=/usr/share/doc/kde/HTML/*/*
+path-exclude=/usr/share/omf/*/*-*.emf
+path-exclude=/usr/share/tcltk/t*/msgs/*.msg
+path-exclude=/usr/share/cups/templates/*
+path-exclude=/usr/share/cups/locale/*
+path-exclude=/usr/share/cups/doc-root/*
+path-exclude=/usr/share/calendar/*
+path-exclude=/usr/share/aptitude/*.*
+path-exclude=/usr/share/help/*
+path-exclude=/usr/share/vim/vim*/lang/*
+path-exclude=/usr/share/man/*
+# Paths to keep
+path-include=/usr/share/locale/locale.alias
+path-include=/usr/share/gnome/help/*/C/*
+path-include=/usr/share/doc/kde/HTML/C/*
+path-include=/usr/share/omf/*/*-C.emf
+path-include=/usr/share/locale/languages
+path-include=/usr/share/locale/all_languages
+path-include=/usr/share/locale/currency/*
+path-include=/usr/share/locale/l10n/*
+path-include=/usr/share/cups/templates/*.tmpl
+path-include=/usr/share/cups/doc-root/*.*
+path-include=/usr/share/cups/doc-root/help
+path-include=/usr/share/cups/doc-root/images
+path-include=/usr/share/calendar/*.*
+path-include=/usr/share/aptitude/help.txt
+path-include=/usr/share/aptitude/mine-help.txt
+path-include=/usr/share/help/C/*
+path-include=/usr/share/vim/vim*/lang/*.*
+path-include=/usr/share/man/man[0-9]/*

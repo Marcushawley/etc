@@ -1,0 +1,1 @@
+deb [signed-by=/usr/share/keyrings/tkl-bullseye-testing.gpg] http://archive.turnkeylinux.org/debian bullseye-testing main
